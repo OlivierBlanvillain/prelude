@@ -133,28 +133,28 @@ package object prelude {
 
   import scala.collection.mutable.ArrayOps
 
-  implicit def genericArrayOps[T](xs: Array[T]): ArrayOps[T] = xs match {
-    case x: Array[AnyRef]  => refArrayOps[AnyRef](x).asInstanceOf[ArrayOps[T]]
-    case x: Array[Int]     => intArrayOps(x).asInstanceOf[ArrayOps[T]]
-    case x: Array[Double]  => doubleArrayOps(x).asInstanceOf[ArrayOps[T]]
-    case x: Array[Long]    => longArrayOps(x).asInstanceOf[ArrayOps[T]]
-    case x: Array[Float]   => floatArrayOps(x).asInstanceOf[ArrayOps[T]]
-    case x: Array[Char]    => charArrayOps(x).asInstanceOf[ArrayOps[T]]
-    case x: Array[Byte]    => byteArrayOps(x).asInstanceOf[ArrayOps[T]]
-    case x: Array[Short]   => shortArrayOps(x).asInstanceOf[ArrayOps[T]]
-    case x: Array[Boolean] => booleanArrayOps(x).asInstanceOf[ArrayOps[T]]
-    case x: Array[Unit]    => unitArrayOps(x).asInstanceOf[ArrayOps[T]]
+  implicit def preludeGenericArrayOps[T](xs: Array[T]): ArrayOps[T] = xs match {
+    case x: Array[AnyRef]  => preludeRefArrayOps[AnyRef](x).asInstanceOf[ArrayOps[T]]
+    case x: Array[Int]     => preludeIntArrayOps(x)        .asInstanceOf[ArrayOps[T]]
+    case x: Array[Double]  => preludeDoubleArrayOps(x)     .asInstanceOf[ArrayOps[T]]
+    case x: Array[Long]    => preludeLongArrayOps(x)       .asInstanceOf[ArrayOps[T]]
+    case x: Array[Float]   => preludeFloatArrayOps(x)      .asInstanceOf[ArrayOps[T]]
+    case x: Array[Char]    => preludeCharArrayOps(x)       .asInstanceOf[ArrayOps[T]]
+    case x: Array[Byte]    => preludeByteArrayOps(x)       .asInstanceOf[ArrayOps[T]]
+    case x: Array[Short]   => preludeShortArrayOps(x)      .asInstanceOf[ArrayOps[T]]
+    case x: Array[Boolean] => preludeBooleanArrayOps(x)    .asInstanceOf[ArrayOps[T]]
+    case x: Array[Unit]    => preludeUnitArrayOps(x)       .asInstanceOf[ArrayOps[T]]
     case null              => null
   }
 
-  implicit def refArrayOps[T <: AnyRef](xs: Array[T]): ArrayOps[T] = new ArrayOps.ofRef[T](xs)
-  implicit def intArrayOps(xs: Array[Int]): ArrayOps[Int] = new ArrayOps.ofInt(xs)
-  implicit def doubleArrayOps(xs: Array[Double]): ArrayOps[Double] = new ArrayOps.ofDouble(xs)
-  implicit def longArrayOps(xs: Array[Long]): ArrayOps[Long] = new ArrayOps.ofLong(xs)
-  implicit def floatArrayOps(xs: Array[Float]): ArrayOps[Float] = new ArrayOps.ofFloat(xs)
-  implicit def charArrayOps(xs: Array[Char]): ArrayOps[Char] = new ArrayOps.ofChar(xs)
-  implicit def byteArrayOps(xs: Array[Byte]): ArrayOps[Byte] = new ArrayOps.ofByte(xs)
-  implicit def shortArrayOps(xs: Array[Short]): ArrayOps[Short] = new ArrayOps.ofShort(xs)
-  implicit def booleanArrayOps(xs: Array[Boolean]): ArrayOps[Boolean] = new ArrayOps.ofBoolean(xs)
-  implicit def unitArrayOps(xs: Array[Unit]): ArrayOps[Unit] = new ArrayOps.ofUnit(xs)
+  implicit def preludeRefArrayOps[T <: AnyRef](xs: Array[T]):       ArrayOps[T]       = new ArrayOps.ofRef[T](xs)
+  implicit def preludeIntArrayOps             (xs: Array[Int]):     ArrayOps[Int]     = new ArrayOps.ofInt(xs)
+  implicit def preludeDoubleArrayOps          (xs: Array[Double]):  ArrayOps[Double]  = new ArrayOps.ofDouble(xs)
+  implicit def preludeLongArrayOps            (xs: Array[Long]):    ArrayOps[Long]    = new ArrayOps.ofLong(xs)
+  implicit def preludeFloatArrayOps           (xs: Array[Float]):   ArrayOps[Float]   = new ArrayOps.ofFloat(xs)
+  implicit def preludeCharArrayOps            (xs: Array[Char]):    ArrayOps[Char]    = new ArrayOps.ofChar(xs)
+  implicit def preludeByteArrayOps            (xs: Array[Byte]):    ArrayOps[Byte]    = new ArrayOps.ofByte(xs)
+  implicit def preludeShortArrayOps           (xs: Array[Short]):   ArrayOps[Short]   = new ArrayOps.ofShort(xs)
+  implicit def preludeBooleanArrayOps         (xs: Array[Boolean]): ArrayOps[Boolean] = new ArrayOps.ofBoolean(xs)
+  implicit def preludeUnitArrayOps            (xs: Array[Unit]):    ArrayOps[Unit]    = new ArrayOps.ofUnit(xs)
 }

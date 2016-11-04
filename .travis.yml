@@ -8,7 +8,7 @@ notifications:
     false
 
 script:
-- sbt test:run
+- sbt +test:run
 
 # Taken from https://github.com/typelevel/cats/blob/master/.travis.yml
 cache:

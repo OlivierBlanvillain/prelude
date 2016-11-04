@@ -1,4 +1,5 @@
 scalaVersion       in ThisBuild := "2.12.0"
+organization       in ThisBuild := "in.nvilla"
 crossScalaVersions in ThisBuild := Seq("2.11.8", "2.12.0")
 scalacOptions      in ThisBuild := Seq(
   "-deprecation",
@@ -24,11 +25,9 @@ lazy val prelude    = crossProject
   .settings(publishSettings: _*)
 
 lazy val publishSettings = Seq(
-  releaseCrossBuild := true,
   releasePublishArtifactsAction := PgpKeys.publishSigned.value,
   publishArtifact in Test := false,
   pomIncludeRepository := Function.const(false),
-  organization := "in.nvilla",
   licenses := Seq(("MIT", url("http://opensource.org/licenses/MIT"))),
   homepage := Some(url("https://github.com/OlivierBlanvillain/prelude")),
   publishMavenStyle := true,

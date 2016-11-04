@@ -1,6 +1,6 @@
-# Prelude [![Travis](https://travis-ci.org/OlivierBlanvillain/prelude.svg?branch=master)](https://travis-ci.org/OlivierBlanvillain/prelude) [![Maven](https://img.shields.io/maven-central/v/in.nvilla/prelude_sjs0.6_2.11.svg?label=maven)](http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22in.nvilla%22%20AND%20a%3A%22prelude_2.11%22)
+# Prelude [![Travis](https://travis-ci.org/OlivierBlanvillain/prelude.svg?branch=master)](https://travis-ci.org/OlivierBlanvillain/prelude) [![Maven](https://img.shields.io/maven-central/v/in.nvilla/prelude_2.12.svg?label=maven)](http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22in.nvilla%22%20AND%20a%3A%22prelude_2.12%22)
 
-Alternative to `scala._` and `scala.Predef._` default import.
+Alternative to `import java.lang._, scala._, scala.Predef._`. Prelude is a *subset* of the default imports, meaning that any code compiled under `-Yno-imports` & `import prelude._` should also compile with the default scalac configuration.
 
 #### build.sbt:
 
@@ -34,7 +34,7 @@ import prelude._
     done
     ```
 
-0. Explicitly import what you use from `scala._` and `scala.Predef._`:
+0. Explicitly import what your project uses `scala._` and `scala.Predef._`:
 
     ```sh
     git ls-files | grep -e '.scala$' |\
@@ -43,7 +43,7 @@ import prelude._
           "import scala.collection.immutable.Seq" \
           "import scala.collection.immutable.Set" \
           "import scala.collection.immutable.Map" \
-          ; do
+          ; do # ^ Add imports as needed
         class=$(echo $import | rev | cut -d "." -f1 | rev)
 
         if grep -q "$class" "$file" && ! grep -q "$import" "$file"; then
